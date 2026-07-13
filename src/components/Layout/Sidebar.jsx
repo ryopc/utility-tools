@@ -1,9 +1,20 @@
-import { Link } from "react-router-dom";
+import { startTransition } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { toolsByCategory } from "../../lib/toolRegistry";
 
 export default function Sidebar() {
+  const navigate = useNavigate();
   const categorized = toolsByCategory();
   const hasTools = Object.values(categorized).some((tools) => tools.length > 0);
+
+  const handleNav = (e, path) => {
+    // Don't intercept modifier clicks (open in new tab)
+    if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+    e.preventDefault();
+    startTransition(() => {
+      navigate(path);
+    });
+  };
 
   return (
     <aside className="w-64 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 p-4 overflow-y-auto flex flex-col">
@@ -31,6 +42,7 @@ export default function Sidebar() {
                 <Link
                   key={tool.id}
                   to={`/tools/${tool.id}`}
+                  onClick={(e) => handleNav(e, `/tools/${tool.id}`)}
                   className="block px-3 py-2 rounded text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition"
                 >
                   {tool.name}
