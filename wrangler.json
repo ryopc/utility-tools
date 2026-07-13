@@ -1,0 +1,16 @@
+{
+  "name": "utility-tools",
+  "type": "javascript",
+  "main": "dist/index.html",
+  "build": {
+    "command": "npm run build",
+    "cwd": "./",
+    "watch_paths": ["src/**/*.{js,jsx,css}"],
+    "destination_dir": "dist"
+  },
+  "env": {
+    "production": {
+      "name": "utility-tools-prod"
+    }
+  }
+}
