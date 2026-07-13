@@ -24,6 +24,22 @@ export const tools = [
     description: "JSON の整形・圧縮・バリデーション",
     component: lazy(() => import("../tools/json-formatter")),
   },
+  {
+    id: "uuid-generator",
+    name: "UUID ジェネレーター",
+    category: "変換・生成",
+    icon: "🎲",
+    description: "UUID v4 / v1 を生成",
+    component: lazy(() => import("../tools/uuid-generator")),
+  },
+  {
+    id: "qr-generator",
+    name: "QR コード生成",
+    category: "変換・生成",
+    icon: "📱",
+    description: "テキスト/URL を QR コード化",
+    component: lazy(() => import("../tools/qr-generator")),
+  },
 ];
 
 export const toolsByCategory = () => {
