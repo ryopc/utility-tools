@@ -16,7 +16,14 @@ export const tools = [
     description: "テキストと Base64 形式を相互変換",
     component: lazy(() => import("../tools/base64")),
   },
-  // Phase 2-B以降のツールをここに追加
+  {
+    id: "json-formatter",
+    name: "JSON フォーマッター",
+    category: "フォーマッタ",
+    icon: "📋",
+    description: "JSON の整形・圧縮・バリデーション",
+    component: lazy(() => import("../tools/json-formatter")),
+  },
 ];
 
 export const toolsByCategory = () => {
